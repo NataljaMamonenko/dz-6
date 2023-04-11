@@ -1,7 +1,6 @@
 public static void main(String[] args) {
         String[] words = new String[]{"mama", "papa", "it was me", "yes", "no"};
         solver(words);
-
        }
 
 public static void solver(String[] words) {
