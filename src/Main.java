@@ -1,11 +1,10 @@
 import java.util.*;
-
+//те, що робили на лекції
 public class Main {
     public static void main(String[] args) {
-        String[] words = new String[]{"mama", "papa", "it was me", "yes", "no"};
+        String[] words = new String[]{"мама", "тато", "їж їжак желе"};
         solver(words);
     }
-
     public static void solver(String[] words) {
 
         List<String> helpList = new ArrayList<>();
@@ -23,7 +22,6 @@ public class Main {
                     helpMap.put(character, 1);
                 }
             }
-
 
             boolean isRightWord = true;
 
