@@ -3,47 +3,34 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         String[] words = new String[]{"мама", "тато", "їж їжак желе"};
-        solver(words);
+        Set<Character> uniqueChars = solver(words);
+        System.out.println(uniqueChars);
     }
-    public static void solver(String[] words) {
-
-        List<String> helpList = new ArrayList<>();
+    public static Set<Character> solver(String[] words) {
+        Set<Character> uniqueChars = new HashSet<>();
 
         for (String word : words) {
-            char[] chars = word.toCharArray();
-
-            Map<Character, Integer> helpMap = new HashMap<>();
-
-            for (Character character : chars) {
-                if (helpMap.containsKey(character)) {
-                    Integer value = helpMap.get(character) + 1;
-                    helpMap.put(character, value);
-                } else {
-                    helpMap.put(character, 1);
-                }
+            Map<Character, Integer> charCount = new HashMap<>();
+            for (char ch : word.toCharArray()) {
+                charCount.put(ch, charCount.getOrDefault(ch, 0) + 1);
             }
 
             boolean isRightWord = true;
-
-            for (Character key : helpMap.keySet()) {
-                if (helpMap.get(key) % 2 != 0) {
+            for (int count : charCount.values()) {
+                if (count % 2 != 0) {
                     isRightWord = false;
+                    break;
                 }
             }
 
             if (isRightWord) {
-                helpList.add(word);
+                for (char ch : word.toCharArray()) {
+                    uniqueChars.add(ch);
+                }
             }
         }
 
-        Set<Character> mySet = new HashSet<>();
-
-        for (String word : helpList) {
-            for (Character character : word.toCharArray()) {
-                mySet.add(character);
-            }
-        }
+        return uniqueChars;
     }
 }
-
 
